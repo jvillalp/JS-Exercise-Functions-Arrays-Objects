@@ -40,7 +40,7 @@ function addNumbers(num1, num2) {
  * }
 */
 function makePersonObject(/* code here */) {
-  /* code here */
+  
 }
 
 /**
