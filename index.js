@@ -47,7 +47,7 @@ function makePersonObject(id, name, email) {
   };
   return PersonObject;
 }
-// console.log(makePersonObject(5, Leia, leia@leia.com));
+console.log(makePersonObject(5, 'Leia', 'leia@leia.com'));
 /**
  * ### Challenge `getName`
  * 
@@ -61,10 +61,9 @@ function makePersonObject(id, name, email) {
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(FullName) {
-  return "Hello, my name is " + FullName.name;
+function getName(Person) {
+  return "Hello, my name is " + Person.name;
 }
-
 /**
  * ### Challenge `makeSmartPerson`
  * 
@@ -78,14 +77,18 @@ function getName(FullName) {
  *         and returns a string like `Hello, my name is {name}`.
  *         where `{name}` is the name passed into `makeSmartPerson`.
 */
-function makeSmartPerson(Person) {
-
-  return "Hello, my name is " +  Person.name;
+function makeSmartPerson(name) {
+  const PersonObject = {
+    name: name,
+    sum: function(num1, num2) {
+      return num1 + num2;
+    },
+    speak: function() {
+      return 'Hello, my name is ' + this.name;
+    }
+  };
+  return PersonObject
 }
-
-
-
-
 
 /*
 // ⭐️ Example Test Data ⭐️
@@ -118,10 +121,10 @@ var inventory = [
   * NOTE: This example has been completed for you.
 **/
 function get3rdCar(inventory) {
-  const the3rd = inventory.find((item, index) => {
+  const cars = inventory.find((item, index) => {
     return index === 2 // we use 2 because index is zero-based.
   })
-  return `The car is a ${the3rd.car_make} ${the3rd.car_model}`
+  return `The car is a ${cars.car_make} ${cars.car_model}`
 }
 
 // 👇 COMPLETE YOUR WORK BELOW 👇
@@ -141,10 +144,12 @@ function get3rdCar(inventory) {
  * For example, if getCarInfoByIndex is invoked with the inventory and the number 0,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoByIndex(inventory, index) {
-  /* code here */
+function getCarInfoByIndex(inventory, givenIndex) {
+  const cars = inventory.find((item, index) => {
+    return index === givenIndex // we use 2 because index is zero-based.
+  })
+  return `The car is a ${cars.car_make} ${cars.car_model}`
 }
-
 /**
  * ### Challenge `getLastCarInfo`
  * 
